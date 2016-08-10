@@ -1,0 +1,23 @@
+logging:
+  level: ${DW_LOGLEVEL:-info}
+  appenders:
+    - type: console
+      threshold: ALL
+      timeZone: UTC
+      target: stdout
+      logFormat: "%date %level %c{2} %message\n"
+
+server:
+  type: simple
+  rootPath: /api/*
+  applicationContextPath: /
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: ${PORT:-8081}
+  requestLog:
+    appenders: []
+
+metricsaddress: ${METRICSADDRESS:-localhost}
+metricsport: ${METRICSPORT:-8125}
+metricsfilterregex: ${METRICSFILTERREGEX:-.*}
